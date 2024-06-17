@@ -1,0 +1,84 @@
+{
+  "env": {
+      "browser": true,
+      "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript"
+  ],
+  "parserOptions": {
+      "ecmaVersion": "latest",
+      "project": ["tsconfig.json"],
+      "sourceType": "module"
+  },
+  "rules": {
+    /* "no-use-before-define": https://github.com/typescript-eslint/typescript-eslint/issues/2502 */
+    "no-use-before-define": [
+      0
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "import/order": [
+      1,
+      {
+        "groups": [
+          "external",
+          "builtin",
+          "internal",
+          "sibling",
+          "parent",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "components",
+            "group": "internal"
+          },
+          {
+            "pattern": "common",
+            "group": "internal"
+          },
+          {
+            "pattern": "routes/ **",
+            "group": "internal"
+          },
+          {
+            "pattern": "assets/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "internal"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "react/jsx-one-expression-per-line": 0,
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ]
+  }
+}
