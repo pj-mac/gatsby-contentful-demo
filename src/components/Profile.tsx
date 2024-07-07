@@ -15,15 +15,14 @@ function Profile(props: IProps) {
   return (
     <div key={consultant.id}>
       <div className="text-center">
-        {consultant?.image?.gatsbyImageData && (
-          isDirectoryPage ? (
+        {consultant?.image?.gatsbyImageData &&
+          (isDirectoryPage ? (
             <a href={`consultants/${consultant.slug}`}>
               <GatsbyImage alt={consultant.name ?? ''} image={consultant.image.gatsbyImageData} />
             </a>
           ) : (
             <GatsbyImage alt={consultant.name ?? ''} image={consultant.image.gatsbyImageData} />
-          )
-        )}
+          ))}
       </div>
       <h2 className="text-center">
         <a href={`consultants/${consultant.slug}`} className="no-underline">
@@ -37,30 +36,18 @@ function Profile(props: IProps) {
           </a>
         </div>
       )}
-      {consultant?.phone && (
-        <div className="mb-1">
-          {consultant.phone}
-        </div>
-      )}
+      {consultant?.phone && <div className="mb-1">{consultant.phone}</div>}
       {consultant?.email && (
         <div className="mb-1">
-          <a href={`mailto:${consultant.email}`}>
-            {consultant.email}
-          </a>
+          <a href={`mailto:${consultant.email}`}>{consultant.email}</a>
         </div>
       )}
       {(consultant?.city || consultant?.stateProvince || consultant?.country) && (
         <div className="mb-1">
-          {consultant?.city && (
-            consultant.city
-          )}
-          {(consultant?.city && consultant?.stateProvince) && (
-            <>, </>
-          )}
-          {consultant?.stateProvince && (
-            consultant.stateProvince
-          )}
-          {(consultant?.country) && (consultant?.city || consultant?.stateProvince) && (
+          {consultant?.city && consultant.city}
+          {consultant?.city && consultant?.stateProvince && <>, </>}
+          {consultant?.stateProvince && consultant.stateProvince}
+          {consultant?.country && (consultant?.city || consultant?.stateProvince) && (
             <>
               &nbsp;-&nbsp;
               {consultant.country}
@@ -70,9 +57,7 @@ function Profile(props: IProps) {
       )}
       {consultant?.website && (
         <div className="mb-1">
-          <a href={consultant.website}>
-            {consultant.website}
-          </a>
+          <a href={consultant.website}>{consultant.website}</a>
         </div>
       )}
       {consultant?.skills && (

@@ -16,7 +16,6 @@ interface IProfilePageContext {
 }
 
 interface IProps {
-  // eslint-disable-next-line react/no-unused-prop-types
   pageContext: IProfilePageContext;
   data: IQueryResults;
 }
@@ -28,10 +27,7 @@ function ProfilePageTemplate({ pageContext, data }: IProps) {
     <Layout>
       <div className="m-auto max-w-[800px]">
         <div className="my-2">
-          <a
-            href="/"
-            className="flex gap-2 text-xl"
-          >
+          <a href="/" className="flex gap-2 text-xl">
             <HomeIcon fill="black" className="w-[25px]" />
             HOME
           </a>
@@ -55,9 +51,7 @@ function ProfilePageTemplate({ pageContext, data }: IProps) {
                 &nbsp;thru&nbsp;
               </>
             )}
-            {consultant?.availableEnding && (
-              consultant.availableEnding
-            )}
+            {consultant?.availableEnding && consultant.availableEnding}
           </div>
         )}
 
@@ -86,7 +80,7 @@ export function Head({ data }: IProps) {
 
 export const query = graphql`
   query ($id: String) {
-    consultant: contentfulConsultant(id: {eq: $id}) {
+    consultant: contentfulConsultant(id: { eq: $id }) {
       name
       slug
       title

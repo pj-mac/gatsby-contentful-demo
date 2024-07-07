@@ -7,10 +7,7 @@ function NotFoundPage() {
     <Layout>
       <h1 className="mb-4 text-center">404: Not Found</h1>
       <div className="my-2 flex">
-        <a
-          href="/"
-          className="flex m-auto gap-2 text-2xl"
-        >
+        <a href="/" className="flex m-auto gap-2 text-2xl">
           <HomeIcon fill="black" className="w-[25px]" />
           HOME
         </a>

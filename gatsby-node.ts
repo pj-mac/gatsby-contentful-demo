@@ -2,20 +2,14 @@ import { GatsbyNode } from 'gatsby';
 import * as path from 'path';
 import IConsultant from './src/models/consultant.model';
 
-const createPages: GatsbyNode['createPages'] = async ({
-  graphql,
-  actions,
-  reporter,
-}) => {
+const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const profileTemplate = path.resolve('./src/templates/ProfilePageTemplate.tsx');
 
   const consultantResults: any = await graphql(`
     {
-      allContentfulConsultant(
-        filter: { active: {eq: true}, name: {ne: "PLACEHOLDER"} }
-      ) {
+      allContentfulConsultant(filter: { active: { eq: true }, name: { ne: "PLACEHOLDER" } }) {
         nodes {
           id
           slug
@@ -25,10 +19,7 @@ const createPages: GatsbyNode['createPages'] = async ({
   `);
 
   if (consultantResults.errors) {
-    reporter.panicOnBuild(
-      'There was an error loading your Contentful posts',
-      consultantResults.errors,
-    );
+    reporter.panicOnBuild('There was an error loading your Contentful posts', consultantResults.errors);
     return;
   }
 
@@ -48,5 +39,4 @@ const createPages: GatsbyNode['createPages'] = async ({
   }
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export { createPages };

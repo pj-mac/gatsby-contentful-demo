@@ -14,11 +14,11 @@ export default interface IConsultant {
   website: string;
   image: {
     gatsbyImageData: IGatsbyImageData;
-  }
+  };
   bio: {
     childMarkdownRemark: {
       html: string;
-    }
+    };
   };
   skills: ISkill[];
   hourlyFee: string;

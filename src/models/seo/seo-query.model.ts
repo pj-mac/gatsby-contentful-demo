@@ -6,6 +6,6 @@ export default interface SEOQueryType {
       keywords: string;
       image: string;
       siteUrl: string;
-    }
-  }
+    };
+  };
 }

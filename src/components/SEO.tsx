@@ -3,9 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { SEOProps, SEOQueryTypes } from 'src/models/seo';
 
-function SEO({
-  title = '', description = '', keywords = '', image = '',
-} : SEOProps) {
+function SEO({ title = '', description = '', keywords = '', image = '' }: SEOProps) {
   const query = useStaticQuery<SEOQueryTypes>(graphql`
     {
       site {
@@ -22,9 +20,7 @@ function SEO({
 
   const { siteUrl } = query.site.siteMetadata;
 
-  const fullTitle = title
-    ? `${title} - ${query.site.siteMetadata.title}`
-    : query.site.siteMetadata.title;
+  const fullTitle = title ? `${title} - ${query.site.siteMetadata.title}` : query.site.siteMetadata.title;
 
   const seo = {
     title: fullTitle,

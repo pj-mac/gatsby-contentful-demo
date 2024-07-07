@@ -1,8 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { debounce } from 'lodash';
-import React, {
-  ChangeEvent, useCallback, useEffect, useState,
-} from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Select, { MultiValue } from 'react-select';
 import Layout from '../components/Layout';
 import Profile from '../components/Profile';
@@ -16,9 +14,7 @@ import { filterConsultants } from '../services/filtering.services';
 function Index() {
   const query = useStaticQuery(graphql`
     {
-      allContentfulConsultant(
-        filter: { active: {eq: true}}, sort: {name: ASC}
-      ) {
+      allContentfulConsultant(filter: { active: { eq: true } }, sort: { name: ASC }) {
         nodes {
           id
           name
@@ -39,9 +35,7 @@ function Index() {
           }
         }
       }
-      allContentfulSkill(
-        sort: {name: ASC}
-      ) {
+      allContentfulSkill(sort: { name: ASC }) {
         nodes {
           id
           name
@@ -60,7 +54,7 @@ function Index() {
   useEffect(() => {
     setConsultants(consultantResults);
     setAllConsultants(consultantResults);
-  }, []);
+  }, [consultantResults]);
 
   const skills = query.allContentfulSkill.nodes as ISkill[];
 
@@ -94,8 +88,11 @@ function Index() {
     return changedForm;
   }
 
-  // eslint-disable-next-line max-len
-  const handleDebounceSubmit = useCallback(debounce((changedForm: IConsultantForm) => handleSubmit(changedForm), 500), [consultants]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleDebounceSubmit = useCallback(
+    debounce((changedForm: IConsultantForm) => handleSubmit(changedForm), 500),
+    [consultants]
+  );
 
   function handleDebounceChange(event: ChangeEvent<HTMLInputElement>) {
     const changedForm = handleChange(event);
@@ -126,24 +123,22 @@ function Index() {
           onChange={handleSelectChange}
         />
 
-        <button
-          type="button"
-          className="btn btn-blue"
-          onClick={handleReset}
-        >
+        <button type="button" className="btn btn-blue" onClick={handleReset}>
           Reset
         </button>
       </div>
 
       <div className="flex flex-wrap gap-14 justify-around">
-        {consultants
-          .map((consultant) => (
-            <div key={consultant.id} className="flex flex-col text-black w-full md:w-1/2 lg:w-[30%] max-w-[450px] p-4 rounded-lg shadow-md border-2 border-gray-100">
-              <div className="flex-1">
-                <Profile consultant={consultant} isDirectoryPage />
-              </div>
+        {consultants.map((consultant) => (
+          <div
+            key={consultant.id}
+            className="flex flex-col text-black w-full md:w-1/2 lg:w-[30%] max-w-[450px] p-4 rounded-lg shadow-md border-2 border-gray-100"
+          >
+            <div className="flex-1">
+              <Profile consultant={consultant} isDirectoryPage />
             </div>
-          ))}
+          </div>
+        ))}
       </div>
     </Layout>
   );

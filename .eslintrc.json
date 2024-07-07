@@ -1,84 +1,42 @@
 {
-  "env": {
-      "browser": true,
-      "es2021": true
-  },
   "extends": [
-    "airbnb",
-    "airbnb-typescript"
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
-  "parserOptions": {
-      "ecmaVersion": "latest",
-      "project": ["tsconfig.json"],
-      "sourceType": "module"
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true
   },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "parser": "@typescript-eslint/parser",
   "rules": {
-    /* "no-use-before-define": https://github.com/typescript-eslint/typescript-eslint/issues/2502 */
-    "no-use-before-define": [
-      0
-    ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "react-hooks/exhaustive-deps": [
+      "warn",
       {
-        "ts": "never",
-        "tsx": "never"
+        "enableDangerousAutofixThisMayCauseInfiniteLoops": true
       }
     ],
-    "sort-imports": [
-      "error",
-      {
-        "ignoreCase": true,
-        "ignoreDeclarationSort": true
-      }
-    ],
-    "import/order": [
-      1,
-      {
-        "groups": [
-          "external",
-          "builtin",
-          "internal",
-          "sibling",
-          "parent",
-          "index"
-        ],
-        "pathGroups": [
-          {
-            "pattern": "components",
-            "group": "internal"
-          },
-          {
-            "pattern": "common",
-            "group": "internal"
-          },
-          {
-            "pattern": "routes/ **",
-            "group": "internal"
-          },
-          {
-            "pattern": "assets/**",
-            "group": "internal",
-            "position": "after"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": [
-          "internal"
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ],
-    "react/jsx-one-expression-per-line": 0,
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      {
-        "required": {
-          "some": ["nesting", "id"]
-        }
-      }
-    ]
+    "no-prototype-builtins": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "trailingComma": "es5",
+      "printWidth": 120,
+      "semi": true,
+      "endOfLine": "auto"
+    }]
   }
 }
