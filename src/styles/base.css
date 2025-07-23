@@ -1,0 +1,54 @@
+@layer base {
+  html { 
+    height: -webkit-fill-available;
+    font-family: Open Sans, sans-serif;
+  }
+  header {
+    @apply mt-4 mb-6;
+  }
+  footer {
+    @apply border-t-2 border-gray-200 mt-8 pb-8 pt-4 text-center;
+  }
+  main {
+    @apply mx-4;
+  }
+  h1 {
+    @apply font-bold text-2xl md:text-3xl;
+  }
+  h2 {
+    @apply font-semibold text-2xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  h4 {
+    @apply text-base;
+  }
+  h5 {
+    @apply text-sm;
+  }
+  h6 {
+    @apply text-xs;
+  }
+  p {
+    @apply mb-2;
+  }
+  a {
+    @apply underline;
+  }
+  ol, ul, menu {
+    @apply list-disc list-outside ml-4;
+  }
+  .input-text {
+    @apply border-[1px] border-gray-400 h-10 p-2 rounded-md;
+  }
+  .btn {
+    @apply font-bold py-2 px-4 rounded;
+  }
+  .btn-blue {
+    @apply bg-blue-500 text-white;
+  }
+  .btn-blue:hover {
+    @apply bg-blue-700;
+  }
+}

@@ -1,0 +1,8 @@
+.cache
+.vscode
+src/images
+node_modules
+public
+!.config
+!src/.config
+!src/.services

@@ -1,0 +1,5 @@
+# Rename to .env or create an .env file per environment, such as .env.development and  .env.production.
+{
+  "spaceId": "...",
+  "accessToken": "..."
+}
